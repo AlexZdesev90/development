@@ -24,14 +24,13 @@ const cssLoaders = (extra) => {
 const baseConfig = {
     entry: {
         index: path.resolve(__dirname, './src/pages/main/index'),
-        basket: path.resolve(__dirname, './src/pages/basket/basket'),
+        // basket: path.resolve(__dirname, './src/pages/basket/basket'),
     },
     mode: 'development',
     module: {
         rules: [
             {
                 test: /\.css$/i,
-                // use: ['style-loader', 'css-loader'],
                 use: cssLoaders(),
             },
             { test: /\.ts$/i, use: 'ts-loader', include: [path.resolve(__dirname, 'src')] },
@@ -41,7 +40,6 @@ const baseConfig = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                // use: ['style-loader', 'css-loader', 'sass-loader'],
                 use: cssLoaders('sass-loader'),
             },
         ],
@@ -60,11 +58,11 @@ const baseConfig = {
             filename: 'index.html',
             chunks: ['index'],
         }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './src/pages/basket/basket.html'),
-            filename: 'basket.html',
-            chunks: ['basket'],
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: path.resolve(__dirname, './src/pages/basket/basket.html'),
+        //     filename: 'basket.html',
+        //     chunks: ['basket'],
+        // }),
         new MiniCSSExtractPlugin({
             filename: '[name].css',
         }),

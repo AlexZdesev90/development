@@ -8,10 +8,18 @@
 </head>
 <body>
   <header class="header">
-    <h1>Online store</h1>
-    <!-- <a href="https://rs.school/js/">
-      <img src="<%= require("../../assets/images/rs_school_js.svg") %>" alt="logo footer">
-    </a> -->
+    <div class="container">
+      <div class="logo_and_store">
+        <img class="logo_img" src="<%= require("../../assets/images/iconizer-happy-shopper (1).svg") %>" width="80" alt="logo footer">
+        <h1 class="main-title">Online Store</h1>
+      </div>
+      <div class="cart-total-container">
+        <h2 class="cart-total">Cart total:<span class="cart-total-inner">€1,448.00</span></h2>
+      </div>
+      <div class="basket-container">
+        <img class="header-basket" src="<%= require("../../assets/images/cart.svg") %>" width="80" alt="logo footer">
+      </div>
+    </div>
   </header>
   
   <main class="main">

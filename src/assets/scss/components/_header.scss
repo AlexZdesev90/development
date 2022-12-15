@@ -1,0 +1,58 @@
+.header {
+    background-color: $color_deep-water;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    min-height: 150px;
+}
+
+.container {
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_and_store {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo_img {
+    margin-right: 50px;
+}
+
+.main-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: $color_sea-foam;
+}
+
+.cart-total-inner {
+    margin-left: 15px;
+    color: $color_wave;
+    font-size: 30px;
+}
+
+.basket-container {
+    width: 370px;
+    text-align: end;
+}
+
+.cart-total{
+    color: $color_sea-foam;
+    font-size: 20px;
+    font-weight: 500
+}
+
+.header-basket {
+    background-color: $color_sea-foam;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.header-basket:hover {
+    background-color: $color_wave;
+}
+

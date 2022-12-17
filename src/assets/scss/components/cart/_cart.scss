@@ -1,0 +1,78 @@
+.cart-container {
+    color: rgb(239, 212, 239);
+    margin: 5% auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    height: 50vh;
+    font-size: 18px;
+    /* border: 1px solid black; */
+}
+
+.total-money{
+    color:rgb(200, 13, 200);
+    font-weight: 900;
+}
+
+.text-cart{
+    background-color: rgb(112, 6, 112);
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}
+.cart-item {
+    background-color: rgb(69, 8, 69);
+    border-radius: 10px;
+}
+
+.cart-container-products {
+    width: 60%;
+}
+
+.cart-container-summary {
+    width: 35%;
+}
+
+.cart-item-content {
+    padding: 10px;
+}
+
+.summary-item {
+    margin-bottom: 18%;
+}
+::placeholder {
+    color: black;
+}
+
+.input-summary{
+    border-radius: 20px;
+    background-color: rgb(200, 13, 200);
+    border: none;
+    outline:none;
+    width: 90%;
+    padding: 15px 10px;
+    color:rgb(239, 212, 239);
+    font-size: 18px;
+    box-shadow: 3px 3px 10px rgb(0, 0, 0);
+}
+
+.cart-button {
+    width: 50%;
+    padding: 5px;
+    background-color: rgb(79, 71, 79);
+    color:rgb(168, 168, 168);
+    font-weight: 700;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgb(0, 0, 0);
+}
+
+.cart-button:hover {
+    background-color: rgb(100, 91, 100);
+}
+
+.dlt-btn {
+    background-color: red;
+}

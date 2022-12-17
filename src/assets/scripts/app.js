@@ -1,21 +1,65 @@
 import { apiURL } from './DB';
 
-let products = await getUsers();
+let products = await getProducts();
 
-async function getUsers() {
+async function getProducts() {
     return (await fetch(apiURL)).json();
 }
 
 const mainSelector = document.querySelector('.main');
-const cartsTable = document.createElement('div');
-cartsTable.classList = 'carts__table';
+mainSelector.classList = 'main d-flex';
 
-async function getRenderedTableBody(products) {
-    console.log(products.products);
-    console.log(products);
-    // console.log(Array.from(products.products));
-    // return console.log(await products.products.map(({ id, title, description }) => `${id}, ${title}, ${description}`));
-    return await products.products.map(({ id, title, description }) => `${id}, ${title}, ${description}`);
+const cards = document.createElement('div');
+cards.classList = 'cards';
+
+const cardsMenu = document.createElement('div');
+cardsMenu.classList = 'cards-menu';
+
+const cardsSorts = document.createElement('div');
+cardsSorts.classList = 'cards-sort';
+cardsSorts.innerHTML = 'sort';
+
+const cardsFound = document.createElement('div');
+cardsFound.classList = 'cards-found';
+cardsFound.innerHTML = 'Found:';
+
+const cardsSearch = document.createElement('div');
+cardsSearch.classList = 'cards-search';
+cardsSearch.innerHTML = 'search';
+
+const cardsSwitch = document.createElement('div');
+cardsSwitch.classList = 'cards-switch';
+cardsSwitch.innerHTML = 'switch';
+
+const cardsTable = document.createElement('div');
+cardsTable.classList = 'cards-table';
+
+function getRenderedTableBody(products) {
+    return products.products
+        .map((products) => {
+            return `<div class="card-container" data-id="${products.id}">
+        <div class="img-container">
+        <img class="card-image" src="${products.images[0]}" width="300" alt="card-image">
+        <div class="card-price">${products.price}</div>
+        <div class="card-name">${products.title}</div>
+        <div class="card-description">${products.description}</div>
+        <div>
+            <button class="btn btn-add">Add to cart</button>
+            <button class="btn btn-details">Details</button>
+        </div>
+        </div>
+    </div>`;
+        })
+        .join('');
 }
-cartsTable.innerHTML = getRenderedTableBody(products);
-mainSelector.appendChild(cartsTable);
+cardsTable.innerHTML = getRenderedTableBody(products);
+
+mainSelector.appendChild(cards);
+
+cards.appendChild(cardsMenu);
+cards.appendChild(cardsTable);
+
+cardsMenu.appendChild(cardsSorts);
+cardsMenu.appendChild(cardsFound);
+cardsMenu.appendChild(cardsSearch);
+cardsMenu.appendChild(cardsSwitch);

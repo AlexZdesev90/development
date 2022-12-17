@@ -56,10 +56,10 @@ filterCategory.appendChild(filterCategoryBody);
 
 // filter brand
 const filterBrand = document.createElement('div');
-filterBrand.classList = 'filter-block brand';
+filterBrand.classList = 'filter-block brand-block';
 
 const filterBrandTitle = document.createElement('div');
-filterBrandTitle.classList = 'filter-title brand';
+filterBrandTitle.classList = 'filter-title brand-title';
 filterBrandTitle.innerHTML = 'Brand';
 
 const filterBrandBody = document.createElement('div');
@@ -79,9 +79,61 @@ filterBrandBody.innerHTML = getRenderedFilterBrandBody(products);
 filterBrand.appendChild(filterBrandTitle);
 filterBrand.appendChild(filterBrandBody);
 
+// filter price
+const filterPrice = document.createElement('div');
+filterPrice.classList = 'filter-block price-block';
+
+const filterPriceTitle = document.createElement('div');
+filterPriceTitle.classList = 'filter-title price-title';
+filterPriceTitle.innerHTML = 'Price';
+
+const filterPriceBody = document.createElement('div');
+filterPriceBody.classList = 'price-body';
+// function getRenderedFilterBrandBody(products) {
+//     return products.products
+//         .map((products) => {
+//             return `<div class = "filter-item">
+//                     <input type="checkbox" data-uid="${products.id}" name="${products.brand}">
+//                     <label for="${products.brand}">${products.brand}</label>
+//                     </div>`;
+//         })
+//         .join('');
+// }
+filterPriceBody.innerHTML = 'input range';
+
+filterPrice.appendChild(filterPriceTitle);
+filterPrice.appendChild(filterPriceBody);
+
+// filter stock
+const filterStock = document.createElement('div');
+filterStock.classList = 'filter-block price-block';
+
+const filterStockTitle = document.createElement('div');
+filterStockTitle.classList = 'filter-title price-title';
+filterStockTitle.innerHTML = 'Stoke';
+
+const filterStokeBody = document.createElement('div');
+filterStokeBody.classList = 'price-body';
+// function getRenderedFilterBrandBody(products) {
+//     return products.products
+//         .map((products) => {
+//             return `<div class = "filter-item">
+//                     <input type="checkbox" data-uid="${products.id}" name="${products.brand}">
+//                     <label for="${products.brand}">${products.brand}</label>
+//                     </div>`;
+//         })
+//         .join('');
+// }
+filterStokeBody.innerHTML = 'input range';
+
+filterStock.appendChild(filterStockTitle);
+filterStock.appendChild(filterStokeBody);
+
 productFilter.appendChild(buttonFilter);
 productFilter.appendChild(filterCategory);
 productFilter.appendChild(filterBrand);
+productFilter.appendChild(filterPrice);
+productFilter.appendChild(filterStock);
 
 mainSelector.appendChild(productFilter);
 

@@ -75,6 +75,9 @@ const baseConfig = {
         new CleanWebpackPlugin(),
         new EslintPlugin({ extensions: 'ts' }),
     ],
+    experiments: {
+        topLevelAwait: true,
+    },
 };
 
 module.exports = ({ mode }) => {

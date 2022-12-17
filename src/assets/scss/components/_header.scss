@@ -35,14 +35,14 @@
 }
 
 .basket-container {
-    width: 370px;
+    width: 200px;
     text-align: end;
 }
 
 .cart-total{
     color: $color_sea-foam;
     font-size: 20px;
-    font-weight: 500
+    font-weight: 500;
 }
 
 .header-basket {
@@ -56,3 +56,30 @@
     background-color: $color_wave;
 }
 
+// @media screen and (max-width: 1300px) {
+
+//     .container {
+//         flex-direction: column;
+//         // margin-left: 38%;
+//     }
+
+//     .header-basket {
+//         position: absolute;
+//         top: 30px;
+//         right: 10px;
+//     }
+
+//     .logo_and_store {
+//         position: absolute;
+//         top: 30px;
+//         left: 10px;
+//     }
+
+// }
+// @media screen and (max-width: 1100px) {
+
+//     .container {
+//         margin-left: 20%;
+//     }
+
+// }

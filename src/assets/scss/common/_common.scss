@@ -47,7 +47,7 @@ ol {
   margin: 13px 0;
   background-color: $color_sea-foam;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .filter-title{
@@ -56,7 +56,7 @@ ol {
   border-radius: 5px;
   padding: 5px;
   font-size: 24px;
-  margin-bottom: 5px ;
+  margin-bottom: 10px ;
 }
 
 .filter-body{
@@ -67,5 +67,6 @@ ol {
   overflow-y: auto;
 }
 .filter-item{
+  margin: 5px 0;
   width: 310px;
 }

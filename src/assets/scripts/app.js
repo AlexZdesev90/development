@@ -36,16 +36,28 @@ const filterCategoryTitle = document.createElement('div');
 filterCategoryTitle.classList = 'filter-title category-title';
 filterCategoryTitle.innerHTML = 'Category';
 
+function unique(arr) {
+    let result = [];
+
+    for (let str of arr) {
+        if (!result.includes(str)) {
+            result.push(str);
+        }
+    }
+
+    return result;
+}
+
 const filterCategoryBody = document.createElement('div');
 filterCategoryBody.classList = 'filter-body category-body';
 function getRenderedFilterCategoryBody(products) {
+    unique(products.products);
     return products.products
         .map((products) => {
             return `<div class = "filter-item">
-            <input type="checkbox" data-uid="${products.id}" name="${products.category}">
-            <label for="${products.category}">${products.category}</label>
-            </div>
-            `;
+                        <input type="checkbox" data-uid="${products.id}" name="${products.category}">
+                        <label for="${products.category}">${products.category}</label>
+                    </div>`;
         })
         .join('');
 }
@@ -68,8 +80,8 @@ function getRenderedFilterBrandBody(products) {
     return products.products
         .map((products) => {
             return `<div class = "filter-item">
-                    <input type="checkbox" data-uid="${products.id}" name="${products.brand}">
-                    <label for="${products.brand}">${products.brand}</label>
+                        <input type="checkbox" data-uid="${products.id}" name="${products.brand}">
+                        <label for="${products.brand}">${products.brand}</label>
                     </div>`;
         })
         .join('');
@@ -146,39 +158,54 @@ cardsMenu.classList = 'cards-menu';
 
 const cardsSorts = document.createElement('div');
 cardsSorts.classList = 'cards-sort';
-cardsSorts.innerHTML = 'sort';
+function getRenderedSortCards() {
+    return `<select class="select-sort">
+                <option class="select-item" value="0">Sort option:</option>
+                <option class="select-item" value="1">Sort by 1</option>
+                <option class="select-item" value="2">Sort by 2</option>
+                <option class="select-item" value="3">Sort by 3</option>
+                <option class="select-item" value="4">Sort by 4</option>
+            </select>`;
+}
+cardsSorts.innerHTML = getRenderedSortCards();
 
 const cardsFound = document.createElement('div');
 cardsFound.classList = 'cards-found';
 cardsFound.innerHTML = 'Found:';
 
-const cardsSearch = document.createElement('div');
+const cardsSearch = document.createElement('input');
 cardsSearch.classList = 'cards-search';
-cardsSearch.innerHTML = 'search';
+cardsSearch.placeholder = 'Search';
 
 const cardsSwitch = document.createElement('div');
 cardsSwitch.classList = 'cards-switch';
-cardsSwitch.innerHTML = 'switch';
+cardsSwitch.innerHTML = `
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>`;
 
 const cardsTable = document.createElement('div');
 cardsTable.classList = 'cards-table';
 
 function getRenderedTableBody(products) {
-    console.log(products.products);
     return products.products
         .map((products) => {
             return `<div class="card-container" data-id="${products.id}">
-        <div class="img-container">
-        <img class="card-image" src="${products.images[0]}"   alt="card-image">
-        <div class="card-price">Price: &#8364;${products.price}</div>
-        <div class="card-name">${products.title}</div>
-        <div class="card-description">${products.description}</div>
-        <div>
-            <button class="btn btn-add">Add to cart</button>
-            <button class="btn btn-details">Details</button>
-        </div>
-        </div>
-    </div>`;
+                        <div class="img-container">
+                            <img class="card-image" src="${products.images[0]}"   alt="card-image">
+                            <div class="card-price">Price: &#8364;${products.price}</div>
+
+                            <div class="card-name">${products.title}</div>
+
+                            <div class="card-description">${products.description}</div>
+
+                            <div>
+                                <button class="btn btn-add">Add to cart</button>
+                                <button class="btn btn-details">Details</button>
+                            </div>
+                        </div>
+                    </div>`;
         })
         .join('');
 }

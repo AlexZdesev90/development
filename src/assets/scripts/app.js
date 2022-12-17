@@ -63,3 +63,16 @@ cardsMenu.appendChild(cardsSorts);
 cardsMenu.appendChild(cardsFound);
 cardsMenu.appendChild(cardsSearch);
 cardsMenu.appendChild(cardsSwitch);
+
+let cardsContainer = document.querySelectorAll(".card-container");
+cardsContainer.forEach((el) => {
+    let price = el.childNodes[1].childNodes[3].innerHTML;
+    let title = el.childNodes[1].childNodes[5].innerHTML;
+    let btn = el.childNodes[1].childNodes[9].childNodes[1];
+
+    btn.addEventListener('click', () => {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        let card = {title, price};
+        localStorage.setItem('cart', JSON.stringify([...cart, card]));
+    })
+})

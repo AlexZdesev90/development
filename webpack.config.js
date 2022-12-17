@@ -26,6 +26,7 @@ const baseConfig = {
         index: path.resolve(__dirname, './src/pages/main/index'),
         // basket: path.resolve(__dirname, './src/pages/basket/basket'),
         modal: path.resolve(__dirname, './src/pages/modal/modal'),
+        cart: path.resolve(__dirname, './src/pages/cart/cart'),
     },
     mode: 'development',
     module: {
@@ -68,6 +69,11 @@ const baseConfig = {
             template: path.resolve(__dirname, './src/pages/modal/modal.html'),
             filename: 'modal.html',
             chunks: ['modal'],
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, './src/pages/cart/cart.html'),
+            filename: 'cart.html',
+            chunks: ['cart'],
         }),
         new MiniCSSExtractPlugin({
             filename: '[name].css',

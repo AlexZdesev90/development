@@ -21,3 +21,51 @@ ol {
 .d-flex{
   display: flex;
 }
+
+.wrapper{
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: $color_deep-water;
+}
+
+.btn {
+  background-color: $color_ocean;
+  color: $color_sea-foam;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 30px;
+  width: 45%;
+}
+
+.btn:hover {
+  background-color: $color_deep-water;
+}
+
+.filter-block{
+  margin: 13px 0;
+  background-color: $color_sea-foam;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.filter-title{
+  text-align: center;
+  background-color: $color_wave;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 24px;
+  margin-bottom: 5px ;
+}
+
+.filter-body{
+  border: 1px solid $color_ocean;
+  border-radius: 5px;
+  padding: 5px;
+  height: 200px;
+  overflow-y: auto;
+}
+.filter-item{
+  width: 310px;
+}

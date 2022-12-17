@@ -58,21 +58,4 @@ main {
     margin: 0 auto;
     margin-bottom: 4px;
     border-radius: 5px;
-    height: 55px;
-    overflow: hidden;
-    padding: 5px;
-}
-
-.btn {
-    background-color: $color_ocean;
-    color: $color_sea-foam;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 30px;
-    width: 45%;
-}
-
-.btn:hover {
-    background-color: $color_deep-water;
 }

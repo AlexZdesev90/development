@@ -39,8 +39,8 @@ function getRenderedTableBody(products) {
         .map((products) => {
             return `<div class="card-container" data-id="${products.id}">
         <div class="img-container">
-        <img class="card-image" src="${products.images[0]}" width="300" alt="card-image">
-        <div class="card-price">${products.price}</div>
+        <img class="card-image" src="${products.images[0]}"   alt="card-image">
+        <div class="card-price">Price: &#8364;${products.price}</div>
         <div class="card-name">${products.title}</div>
         <div class="card-description">${products.description}</div>
         <div>

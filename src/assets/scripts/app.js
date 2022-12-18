@@ -152,12 +152,12 @@ cardsSorts.classList = 'cards-sort';
 function getRenderedSortCards() {
     return `<select class="select-sort">
                 <option class="select-item" value="">Sort option:</option>
-                <option class="select-item" value="price ask">Sort by price ask</option>
-                <option class="select-item" value="price desk">Sort by price desk</option>
-                <option class="select-item" value="rating ask">Sort by rating ask</option>
-                <option class="select-item" value="rating desk">Sort by rating desk</option>
-                <option class="select-item" value="stoke ask">Sort by stock ask</option>
-                <option class="select-item" value="stoke desk">Sort by stock desk</option>
+                <option class="select-item" value="price asc">Sort by price ask</option>
+                <option class="select-item" value="price desc">Sort by price desk</option>
+                <option class="select-item" value="rating asc">Sort by rating ask</option>
+                <option class="select-item" value="rating desc">Sort by rating desk</option>
+                <option class="select-item" value="stock asc">Sort by stock ask</option>
+                <option class="select-item" value="stock desc">Sort by stock desk</option>
             </select>`;
 }
 cardsSorts.innerHTML = getRenderedSortCards();
@@ -215,23 +215,20 @@ cardsMenu.appendChild(cardsSearch);
 cardsMenu.appendChild(cardsSwitch);
 
 // sort
-let direction = 'asc';
 function sortBy(products, propertyForSort, direction) {
     return products.sort((productA, productB) => {
         if (productA[propertyForSort] > productB[propertyForSort]) {
             return direction === 'asc' ? 1 : -1;
         } else if (productA[propertyForSort] < productB[propertyForSort]) {
-            return direction === 'asc' ? -1 : 1;
+            return direction === 'desc' ? 1 : -1;
         } else {
             return 0;
         }
     });
 }
 
-// sort by stoke
-document.querySelector('.select-sort').addEventListener('change', (event) => {
-    console.log(event.target.value);
-    console.log(direction);
+// sort by
+document.querySelector('.select-sort').addEventListener('input', (event) => {
     let valueEvent = event.target.value;
     let splitValue = valueEvent.split(' ');
     products = sortBy(products, splitValue[0], splitValue[1]);

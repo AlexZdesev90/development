@@ -54,8 +54,10 @@ main {
 .card-description {
     text-align: center;
     width: 95%;
+    height: 50px;
     background-color: $color_sea-foam;
     margin: 0 auto;
     margin-bottom: 4px;
     border-radius: 5px;
+    overflow: hidden;
 }

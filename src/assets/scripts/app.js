@@ -1,3 +1,4 @@
+
 import { apiURL } from './DB';
 
 let products = await getProducts();
@@ -214,20 +215,6 @@ cardsMenu.appendChild(cardsFound);
 cardsMenu.appendChild(cardsSearch);
 cardsMenu.appendChild(cardsSwitch);
 
-let cardsContainer = document.querySelectorAll('.card-container');
-cardsContainer.forEach((el) => {
-    let image = el.childNodes[1].childNodes[1].src;
-    let price = el.childNodes[1].childNodes[3].innerHTML;
-    let title = el.childNodes[1].childNodes[5].innerHTML;
-    let btn = el.childNodes[1].childNodes[9].childNodes[1];
-
-    btn.addEventListener('click', () => {
-        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        let card = { title, price, image };
-        localStorage.setItem('cart', JSON.stringify([...cart, card]));
-    });
-});
-
 // sort
 let direction = 'asc';
 function sortBy(products, propertyForSort, direction) {
@@ -251,3 +238,18 @@ document.querySelector('.select-sort').addEventListener('change', (event) => {
     products = sortBy(products, splitValue[0], splitValue[1]);
     cardsTable.innerHTML = getRenderedTableBody(products);
 });
+
+let cardsContainer = document.querySelectorAll(".card-container");
+cardsContainer.forEach((el) => {
+    let image = el.childNodes[1].childNodes[1].src;
+    let price = el.childNodes[1].childNodes[3].innerHTML;
+    let title = el.childNodes[1].childNodes[5].innerHTML;
+    let description = el.childNodes[1].childNodes[7].innerHTML
+    let btn = el.childNodes[1].childNodes[9].childNodes[1];
+
+    btn.addEventListener('click', () => {
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        let card = {title, price, image, description};
+        localStorage.setItem('cart', JSON.stringify([...cart, card]));
+    })
+})

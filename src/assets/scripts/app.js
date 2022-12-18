@@ -36,18 +36,27 @@ const filterCategoryTitle = document.createElement('div');
 filterCategoryTitle.classList = 'filter-title category-title';
 filterCategoryTitle.innerHTML = 'Category';
 
-function uniqueCategoryBody(arr) {
-    return Array.from(new Set(arr.map((item) => item.category)));
+function unique(arr) {
+    let result = [];
+
+    for (let str of arr) {
+        if (!result.includes(str)) {
+            result.push(str);
+        }
+    }
+
+    return result;
 }
 
 const filterCategoryBody = document.createElement('div');
 filterCategoryBody.classList = 'filter-body category-body';
 function getRenderedFilterCategoryBody(products) {
-    return uniqueCategoryBody(products.products)
+    unique(products.products);
+    return products.products
         .map((products) => {
             return `<div class = "filter-item">
-                        <input type="checkbox" name="${products}">
-                        <label for="${products}">${products}</label>
+                        <input type="checkbox" data-uid="${products.id}" name="${products.category}">
+                        <label for="${products.category}">${products.category}</label>
                     </div>`;
         })
         .join('');
@@ -65,18 +74,14 @@ const filterBrandTitle = document.createElement('div');
 filterBrandTitle.classList = 'filter-title brand-title';
 filterBrandTitle.innerHTML = 'Brand';
 
-function uniqueBrandBody(arr) {
-    return Array.from(new Set(arr.map((item) => item.brand)));
-}
-
 const filterBrandBody = document.createElement('div');
 filterBrandBody.classList = 'filter-body brand-body';
 function getRenderedFilterBrandBody(products) {
-    return uniqueBrandBody(products.products)
+    return products.products
         .map((products) => {
             return `<div class = "filter-item">
-                        <input type="checkbox" name="${products}">
-                        <label for="${products}">${products}</label>
+                        <input type="checkbox" data-uid="${products.id}" name="${products.brand}">
+                        <label for="${products.brand}">${products.brand}</label>
                     </div>`;
         })
         .join('');
@@ -216,16 +221,17 @@ cardsMenu.appendChild(cardsFound);
 cardsMenu.appendChild(cardsSearch);
 cardsMenu.appendChild(cardsSwitch);
 
-let cardsContainer = document.querySelectorAll('.card-container');
+let cardsContainer = document.querySelectorAll(".card-container");
 cardsContainer.forEach((el) => {
     let image = el.childNodes[1].childNodes[1].src;
     let price = el.childNodes[1].childNodes[3].innerHTML;
     let title = el.childNodes[1].childNodes[5].innerHTML;
+    let description = el.childNodes[1].childNodes[7].innerHTML
     let btn = el.childNodes[1].childNodes[9].childNodes[1];
 
     btn.addEventListener('click', () => {
         let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        let card = {title, price, image};
+        let card = {title, price, image, description};
         localStorage.setItem('cart', JSON.stringify([...cart, card]));
-    });
-});
+    })
+})

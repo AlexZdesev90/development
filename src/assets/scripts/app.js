@@ -1,6 +1,8 @@
+
 import { apiURL } from './DB';
 
 let products = await getProducts();
+products = products.products;
 
 async function getProducts() {
     return (await fetch(apiURL)).json();
@@ -36,30 +38,26 @@ const filterCategoryTitle = document.createElement('div');
 filterCategoryTitle.classList = 'filter-title category-title';
 filterCategoryTitle.innerHTML = 'Category';
 
-function unique(arr) {
-    let result = [];
+function unique(arr, property) {
+    return Array.from(new Set(arr.map((item) => item[property])));
+}
 
-    for (let str of arr) {
-        if (!result.includes(str)) {
-            result.push(str);
-        }
-    }
-
-    return result;
+function renderedFilterItemBody(arg) {
+    return arg
+        .map((products) => {
+            return `<div class = "filter-item">
+                        <input type="checkbox" name="${products}">
+                        <label for="${products}">${products}</label>
+                    </div>`;
+        })
+        .join('');
 }
 
 const filterCategoryBody = document.createElement('div');
 filterCategoryBody.classList = 'filter-body category-body';
 function getRenderedFilterCategoryBody(products) {
-    unique(products.products);
-    return products.products
-        .map((products) => {
-            return `<div class = "filter-item">
-                        <input type="checkbox" data-uid="${products.id}" name="${products.category}">
-                        <label for="${products.category}">${products.category}</label>
-                    </div>`;
-        })
-        .join('');
+    const filterUnique = unique(products, 'category');
+    return renderedFilterItemBody(filterUnique);
 }
 filterCategoryBody.innerHTML = getRenderedFilterCategoryBody(products);
 
@@ -77,14 +75,8 @@ filterBrandTitle.innerHTML = 'Brand';
 const filterBrandBody = document.createElement('div');
 filterBrandBody.classList = 'filter-body brand-body';
 function getRenderedFilterBrandBody(products) {
-    return products.products
-        .map((products) => {
-            return `<div class = "filter-item">
-                        <input type="checkbox" data-uid="${products.id}" name="${products.brand}">
-                        <label for="${products.brand}">${products.brand}</label>
-                    </div>`;
-        })
-        .join('');
+    const filterUnique = unique(products, 'category');
+    return renderedFilterItemBody(filterUnique);
 }
 filterBrandBody.innerHTML = getRenderedFilterBrandBody(products);
 
@@ -160,11 +152,13 @@ const cardsSorts = document.createElement('div');
 cardsSorts.classList = 'cards-sort';
 function getRenderedSortCards() {
     return `<select class="select-sort">
-                <option class="select-item" value="0">Sort option:</option>
-                <option class="select-item" value="1">Sort by 1</option>
-                <option class="select-item" value="2">Sort by 2</option>
-                <option class="select-item" value="3">Sort by 3</option>
-                <option class="select-item" value="4">Sort by 4</option>
+                <option class="select-item" value="">Sort option:</option>
+                <option class="select-item" value="price ask">Sort by price ask</option>
+                <option class="select-item" value="price desk">Sort by price desk</option>
+                <option class="select-item" value="rating ask">Sort by rating ask</option>
+                <option class="select-item" value="rating desk">Sort by rating desk</option>
+                <option class="select-item" value="stoke ask">Sort by stock ask</option>
+                <option class="select-item" value="stoke desk">Sort by stock desk</option>
             </select>`;
 }
 cardsSorts.innerHTML = getRenderedSortCards();
@@ -189,7 +183,7 @@ const cardsTable = document.createElement('div');
 cardsTable.classList = 'cards-table';
 
 function getRenderedTableBody(products) {
-    return products.products
+    return products
         .map((products) => {
             return `<div class="card-container" data-id="${products.id}">
                         <div class="img-container">
@@ -220,6 +214,30 @@ cardsMenu.appendChild(cardsSorts);
 cardsMenu.appendChild(cardsFound);
 cardsMenu.appendChild(cardsSearch);
 cardsMenu.appendChild(cardsSwitch);
+
+// sort
+let direction = 'asc';
+function sortBy(products, propertyForSort, direction) {
+    return products.sort((productA, productB) => {
+        if (productA[propertyForSort] > productB[propertyForSort]) {
+            return direction === 'asc' ? 1 : -1;
+        } else if (productA[propertyForSort] < productB[propertyForSort]) {
+            return direction === 'asc' ? -1 : 1;
+        } else {
+            return 0;
+        }
+    });
+}
+
+// sort by stoke
+document.querySelector('.select-sort').addEventListener('change', (event) => {
+    console.log(event.target.value);
+    console.log(direction);
+    let valueEvent = event.target.value;
+    let splitValue = valueEvent.split(' ');
+    products = sortBy(products, splitValue[0], splitValue[1]);
+    cardsTable.innerHTML = getRenderedTableBody(products);
+});
 
 let cardsContainer = document.querySelectorAll(".card-container");
 cardsContainer.forEach((el) => {

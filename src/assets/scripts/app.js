@@ -164,7 +164,10 @@ cardsSorts.innerHTML = getRenderedSortCards();
 
 const cardsFound = document.createElement('div');
 cardsFound.classList = 'cards-found';
-cardsFound.innerHTML = 'Found:';
+function renderedFoundBody() {
+    return `Found: ${products.length}`;
+}
+cardsFound.innerHTML = renderedFoundBody();
 
 const cardsSearch = document.createElement('input');
 cardsSearch.classList = 'cards-search';

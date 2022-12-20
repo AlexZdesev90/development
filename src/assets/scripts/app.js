@@ -245,7 +245,13 @@ function searchTo(products, searchString) {
     return products.filter((searchProduct) => {
         return (
             searchProduct.title.toLowerCase().includes(searchString) ||
-            searchProduct.description.toLowerCase().includes(searchString)
+            searchProduct.description.toLowerCase().includes(searchString) ||
+            searchProduct.category.toLowerCase().includes(searchString) ||
+            searchProduct.rating.toString().includes(searchString) ||
+            searchProduct.price.toString().includes(searchString) ||
+            searchProduct.discountPercentage.toString().includes(searchString) ||
+            searchProduct.stock.toString().includes(searchString) ||
+            searchProduct.brand.toLowerCase().includes(searchString)
         );
     });
 }
@@ -256,7 +262,7 @@ document.querySelector('.cards-search').addEventListener('input', (e) => {
     const searchFilterProduct = searchTo(products, searchString);
     cardsTable.innerHTML = getRenderedTableBody(searchFilterProduct);
     cardsFound.innerHTML = renderedFoundBody(searchFilterProduct);
-    console.log(searchString);
+    console.log(products);
 });
 
 let cardsContainer = document.querySelectorAll('.card-container');

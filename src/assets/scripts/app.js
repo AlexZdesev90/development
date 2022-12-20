@@ -251,11 +251,12 @@ function searchTo(products, searchString) {
 }
 
 // search by
-document.querySelector('.cards-search').addEventListener('keyup', (e) => {
+document.querySelector('.cards-search').addEventListener('input', (e) => {
     let searchString = e.target.value.toLowerCase();
     const searchFilterProduct = searchTo(products, searchString);
     cardsTable.innerHTML = getRenderedTableBody(searchFilterProduct);
     cardsFound.innerHTML = renderedFoundBody(searchFilterProduct);
+    console.log(searchString);
 });
 
 let cardsContainer = document.querySelectorAll('.card-container');

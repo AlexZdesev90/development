@@ -20,7 +20,9 @@
     padding: 5px;
     margin: 5px;
     border-radius: 4px;
+    color: #C4DFE6;
 }
+
 .cart-item {
     background-color: #003B46;
     border-radius: 10px;
@@ -40,6 +42,7 @@
 
 .summary-item {
     margin-bottom: 18%;
+    color: #1796af;
 }
 ::placeholder {
     color: black;
@@ -93,4 +96,16 @@
     padding: 5px;
     border: 1px solid black;
     background-color: #66A5AD;
+}
+
+.summary-btn {
+    background-color: #1796af;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 50%;
+    padding: 10px 30px;
+    box-shadow: 3px 3px 10px rgb(0, 0, 0);
+}
+.btn-buy-now {
+    text-decoration: none;
 }

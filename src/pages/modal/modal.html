@@ -12,14 +12,14 @@
         <div class="modal-content">
             <div class="personal_details">
                 <h2>Personal details</h2>
-                <input class="input input_name" type="text" placeholder="Name">
-                <input class="input input_telephone" type="tel" placeholder="Phone number">
-                <input class="input input_address" type="text" placeholder="Delivery address">
-                <input class="input input_email" type="email" placeholder="E-mail">
+                <div><input class="input input_name" type="text" placeholder="Name"><span class="error error-name"></span></div>
+                <div><input class="input input_telephone" type="tel" placeholder="Phone number"><span class="error error-telephone"></span></div>
+                <div><input class="input input_address" type="text" placeholder="Delivery address"><span class="error error-address"></span></div>
+                <div><input class="input input_email" type="email" placeholder="E-mail"><span class="error error-email"></span></div>
             </div>
             <div class="credit_card_details">
                 <h2>Credit card details</h2>
-                <input class="input input_card" type="text" name="card-num" placeholder="0000 0000 0000 0000" size="18" id="card-number" minlength="19" maxlength="19">
+                <div><input class="input input_card" type="text" name="card-num" placeholder="0000 0000 0000 0000" size="18" id="card-number" minlength="19" maxlength="19"><span class="error error-card"></span></div>
                 <button class="btn_confirm">Confirm</button>
             </div>
         </div>

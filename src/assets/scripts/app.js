@@ -164,13 +164,15 @@ cardsSorts.innerHTML = getRenderedSortCards();
 
 const cardsFound = document.createElement('div');
 cardsFound.classList = 'cards-found';
-function renderedFoundBody() {
-    return `Found: ${products.length}`;
+function renderedFoundBody(products) {
+    const productsLength = products.length;
+    return `Found: ${productsLength}`;
 }
-cardsFound.innerHTML = renderedFoundBody();
+cardsFound.innerHTML = renderedFoundBody(products);
 
 const cardsSearch = document.createElement('input');
 cardsSearch.classList = 'cards-search';
+cardsSearch.type = 'search';
 cardsSearch.placeholder = 'Search';
 
 const cardsSwitch = document.createElement('div');
@@ -236,6 +238,24 @@ document.querySelector('.select-sort').addEventListener('input', (event) => {
     let splitValue = valueEvent.split(' ');
     products = sortBy(products, splitValue[0], splitValue[1]);
     cardsTable.innerHTML = getRenderedTableBody(products);
+});
+
+// search
+function searchTo(products, searchString) {
+    return products.filter((searchProduct) => {
+        return (
+            searchProduct.title.toLowerCase().includes(searchString) ||
+            searchProduct.description.toLowerCase().includes(searchString)
+        );
+    });
+}
+
+// search by
+document.querySelector('.cards-search').addEventListener('keyup', (e) => {
+    let searchString = e.target.value.toLowerCase();
+    const searchFilterProduct = searchTo(products, searchString);
+    cardsTable.innerHTML = getRenderedTableBody(searchFilterProduct);
+    cardsFound.innerHTML = renderedFoundBody(searchFilterProduct);
 });
 
 let cardsContainer = document.querySelectorAll('.card-container');

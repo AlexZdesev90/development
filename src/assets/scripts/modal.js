@@ -3,8 +3,6 @@ const button = document.querySelector('.btn_confirm');
 
 const cardNum = document.getElementById('card-number');
 const errorCard = document.querySelector('.error-card');
-// const cardLogo = document.querySelector(".card-logo");
-// const cardLogoContainer = document.querySelector(".logo-card-container");
 
 cardNum.onkeyup = function (e) {
     if (this.value == this.lastValue) return;
@@ -37,6 +35,7 @@ cardNum.onkeyup = function (e) {
             errorCard.innerHTML = 'Error';
             errorCard.style.display = 'block';
         }
+
     }
 
     cardNum.addEventListener('input', checkCard);
@@ -100,10 +99,12 @@ button.addEventListener('click', validateCVV);
 //из ТЗ - "E-mail". Валидация: проверяется, является ли введенный текст электронной почтой
 const inputEmail = document.querySelector('.input_email');
 
+
 const errorName = document.querySelector('.error-name');
 const errorTel = document.querySelector('.error-telephone');
 const errorAddress = document.querySelector('.error-address');
 const errorEmail = document.querySelector('.error-email');
+
 
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
@@ -113,7 +114,9 @@ function onInput() {
         errorEmail.style.display = 'none';
     } else {
         inputEmail.style.background = 'red';
+
         errorEmail.innerHTML = 'Wrong Email !';
+
         errorEmail.style.display = 'block';
     }
 }
@@ -179,7 +182,9 @@ function onInputTel() {
         errorTel.style.display = 'none';
     } else {
         phoneInput.style.background = 'red';
+
         errorTel.innerHTML = 'Wrong phone number !';
+
         errorTel.style.display = 'block';
     }
 }
@@ -204,6 +209,7 @@ const handleForAddress = () => {
     const value = inputAddress.value.trim();
     if (!checkAddress(value)) {
         inputAddress.style.background = 'red';
+
         errorAddress.innerHTML = 'Wrong address !';
         errorAddress.style.display = 'block';
     } else {
@@ -228,6 +234,7 @@ button.addEventListener('click', handleForAddress);
 
 //логика перехода на главную страницу. После оформления заказа
 //Из ТЗ - > при успешном прохождении валидации всех полей и нажатии на кнопку, выводится сообщение, что заказ оформлен. Затем, спустя 3-5 секунд происходит редирект на главную страницу магазина. Корзина при этом очищается
+
 const buttonOrder = document.querySelector(".btn_order");
 
 function checkValid(){
@@ -250,5 +257,3 @@ function messageOrderIsProcessed() {
 }
 
 buttonOrder.addEventListener('click', messageOrderIsProcessed)
-
-// messageOrderIsProcessed()

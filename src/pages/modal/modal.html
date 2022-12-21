@@ -12,15 +12,40 @@
         <div class="modal-content">
             <div class="personal_details">
                 <h2>Personal details</h2>
-                <div><input class="input input_name" type="text" placeholder="Name"><span class="error error-name"></span></div>
-                <div><input class="input input_telephone" type="tel" placeholder="Phone number"><span class="error error-telephone"></span></div>
-                <div><input class="input input_address" type="text" placeholder="Delivery address"><span class="error error-address"></span></div>
-                <div><input class="input input_email" type="email" placeholder="E-mail"><span class="error error-email"></span></div>
+                <div>
+                    <input class="input input_name" type="text" placeholder="Name">
+                    <span class="error error-name"></span>
+                </div>
+                <div>
+                    <input class="input input_telephone" type="tel" placeholder="Phone number">
+                    <span class="error error-telephone"></span>
+                </div>
+                <div>
+                    <input class="input input_address" type="text" placeholder="Delivery address">
+                    <span class="error error-address"></span>
+                </div>
+                <div>
+                    <input class="input input_email" type="email" placeholder="E-mail">
+                    <span class="error error-email"></span>
+                </div>
             </div>
             <div class="credit_card_details">
                 <h2>Credit card details</h2>
-                <div><input class="input input_card" type="text" name="card-num" placeholder="0000 0000 0000 0000" size="18" id="card-number" minlength="19" maxlength="19"><span class="error error-card"></span></div>
-                <button class="btn_confirm">Confirm</button>
+                <div>
+                    <div class="logo-card-container"><img class="card-logo" src='<%= require("../../assets/images/no-logo-featured.jpg") %>' width="60" height="30">
+                    <input class="input input_card" type="text" name="card-num" placeholder="0000 0000 0000 0000" size="18" id="card-number" minlength="19" maxlength="19"><span class="error error-card"></span>
+                    </div>
+                </div>
+                <div>
+                    <input name="exp_date" class="input exp_date" type="text" maxlength="5" placeholder="MM/YYYY" >
+                    <span class="error error-date" ></span>
+                </div>
+                <div>
+                    <input class="input input_cvv" type="text" name="card-cvv" placeholder="CVV" maxlength="3"><span class="error error-cvv"></span>
+                </div>
+                <div>
+                    <button class="btn_confirm">Check validation</button>&nbsp;<button class="btn_order" disabled="true">Make an order</button>
+                </div>
             </div>
         </div>
     </div>

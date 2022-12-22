@@ -9,9 +9,12 @@ if(cartStorage.length){
         cartStore.append(newCard);
         newCard.innerHTML = `
         <div class='cart-store-container'>
-            <img class='image-store-cart' src='${image}' alt='product'>
-            <div>${title} - ${price}</div>
-            <div class='description'>${description}</div>
-        </div>`;
+            <span class='cart-item-number'>1</span><img class='image-store-cart' src='${image}' alt='product'>
+            <div class='cart-item-title'>${title}<div>
+            <div class='cart-item-price'>${price}</div>
+            <div class='cart-item-description'>${description}</div>
+            <div class='buttons-container'>
+            </div>
+            <span class='text-items'>Items: 1</span><button class='btn-add button-item'>+</button><button class='btn-delete button-item'>-</button></div>`;
     });
 }

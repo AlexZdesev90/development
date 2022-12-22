@@ -28,11 +28,11 @@ cardNum.onkeyup = function (e) {
     function checkCard() {
 
         if (cardNum.value.length === 19) {
-            cardNum.style.background = 'green';
+            cardNum.style.background = 'mediumaquamarine';
             errorCard.style.display = 'none';
         } else {
-            cardNum.style.background = 'red';
-            errorCard.innerHTML = 'Error';
+            cardNum.style.background = 'salmon';
+            errorCard.innerHTML = 'Wrong card number !';
             errorCard.style.display = 'block';
         }
 
@@ -51,11 +51,11 @@ function validateExp() {
         expInput.value += '/';
     }
     if (!validate(expInput.value)) {
-        expInput.style.background = 'red';
+        expInput.style.background = 'salmon';
         errorDate.innerHTML = 'Wrong card expiration date !';
         errorDate.style.display = 'block';
     } else {
-        expInput.style.background = 'green';
+        expInput.style.background = 'mediumaquamarine';
         errorDate.style.display = 'none';
     }
 }
@@ -79,11 +79,11 @@ const CVV_REGEXP = /\d{3,3}/;
 function validateCVV() {
 
     if (!valid(inputCVV.value)) {
-        inputCVV.style.background = 'red';
+        inputCVV.style.background = 'salmon';
         errorCVV.innerHTML = 'Wrong CVV !';
         errorCVV.style.display = 'block';
     } else {
-        inputCVV.style.background = 'green';
+        inputCVV.style.background = 'mediumaquamarine';
         errorCVV.style.display = 'none';
     }
 }
@@ -110,10 +110,10 @@ const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@((
 
 function onInput() {
     if (isEmailValid(inputEmail.value)) {
-        inputEmail.style.background = 'green';
+        inputEmail.style.background = 'mediumaquamarine';
         errorEmail.style.display = 'none';
     } else {
-        inputEmail.style.background = 'red';
+        inputEmail.style.background = 'salmon';
 
         errorEmail.innerHTML = 'Wrong Email !';
 
@@ -143,16 +143,16 @@ const handleName = () => {
     const value = inputName.value.trim();
     if (!checkName(value)) {
 
-        inputName.style.background = 'red';
+        inputName.style.background = 'salmon';
         errorName.innerHTML = 'Wrong Name !';
         errorName.style.display = 'block';
 
     } else {
 
         if (!/\b\w+\b(?:.*?\b\w+\b){1}/.test(value)) {
-            inputName.style.background = 'red';
+            inputName.style.background = 'salmon';
         } else {
-            inputName.style.background = 'green';
+            inputName.style.background = 'mediumaquamarine';
             errorName.style.display = 'none';
         }
 
@@ -178,10 +178,10 @@ phoneInput.addEventListener('input', onInputTel);
 
 function onInputTel() {
     if (isTelValid(phoneInput.value)) {
-        phoneInput.style.background = 'green';
+        phoneInput.style.background = 'mediumaquamarine';
         errorTel.style.display = 'none';
     } else {
-        phoneInput.style.background = 'red';
+        phoneInput.style.background = 'salmon';
 
         errorTel.innerHTML = 'Wrong phone number !';
 
@@ -208,16 +208,16 @@ const handleForAddress = () => {
 
     const value = inputAddress.value.trim();
     if (!checkAddress(value)) {
-        inputAddress.style.background = 'red';
+        inputAddress.style.background = 'salmon';
 
         errorAddress.innerHTML = 'Wrong address !';
         errorAddress.style.display = 'block';
     } else {
 
         if (!/\b\w+\b(?:.*?\b\w+\b){2}/.test(value)) {
-            inputAddress.style.background = 'red';
+            inputAddress.style.background = 'salmon';
         } else {
-            inputAddress.style.background = 'green';
+            inputAddress.style.background = 'mediumaquamarine';
             errorAddress.style.display = 'none';
         }
 
@@ -239,10 +239,10 @@ const buttonOrder = document.querySelector(".btn_order");
 
 function checkValid(){
 
-    if (expInput.style.background === 'green' && inputCVV.style.background === 'green' 
-    && cardNum.style.background === 'green' && inputEmail.style.background === 'green'
-    && inputName.style.background === 'green' && phoneInput.style.background === 'green'
-    && inputAddress.style.background === 'green') {
+    if (expInput.style.background === 'mediumaquamarine' && inputCVV.style.background === 'mediumaquamarine' 
+    && cardNum.style.background === 'mediumaquamarine' && inputEmail.style.background === 'mediumaquamarine'
+    && inputName.style.background === 'mediumaquamarine' && phoneInput.style.background === 'mediumaquamarine'
+    && inputAddress.style.background === 'mediumaquamarine') {
         buttonOrder.removeAttribute('disabled');
     }
 
